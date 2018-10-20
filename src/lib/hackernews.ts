@@ -9,7 +9,7 @@ const StoryTypes = {
 
 interface Story {
     by: string,
-    descendents: number,
+    descendants: number,
     id: number,
     kids: number[],
     score: number,
