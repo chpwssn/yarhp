@@ -32,10 +32,11 @@ class App extends React.Component<props, state> {
         <div className="tl">
           <HackerNews type={StoryTypes.Top} limit={10} target={this.state.target} />
         </div>
-        <div className="clear"></div>
         <div className="configuration">
           <Configuration target={this.state.target} updateTarget={this.setTarget}/>
-
+        </div>
+        <div className="about">
+          <a href="https://github.com/chpwssn/yarhp">GitHub</a> | No terms of service, no privacy policy, no one should use this app.
         </div>
       </div>
     );
