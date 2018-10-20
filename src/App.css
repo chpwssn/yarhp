@@ -32,9 +32,38 @@
 .app {
   margin: 0.5rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
+}
+
+@media only screen and (max-width: 599px) {
+  .app {
+    grid-template-columns: repeat(1, 1fr);
+
+  }
+  .tr {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .configuration { 
+    grid-column: 1;
+    grid-row: 3;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .app {
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+  .tr {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .configuration { 
+    grid-column: 1;
+    grid-row: 2;
+  }
 }
 
 .tl {
@@ -42,18 +71,9 @@
   grid-row: 1;
 }
 
-.tr {
-  grid-column: 2;
-  grid-row: 1;
-}
 
 .clear {
   float: clear
-}
-
-.configuration { 
-  grid-column: 1;
-  grid-row: 2;
 }
 
 .site .refresh {
