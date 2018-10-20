@@ -18,7 +18,7 @@ class ProductHuntPost extends React.Component<props, state> {
 
   public render() {
     return (
-      <div className="hn-story">
+      <div className="producthunt-story">
         <div className="link">
           <div className="title">
             <span className="index">{this.props.index + 1}</span> <a href={this.props.post.redirect_url} target={this.props.target ? "_blank" : ""} >{this.props.post.name} | {this.props.post.tagline}</a>

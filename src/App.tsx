@@ -6,6 +6,7 @@ import { StoryTypes } from './lib/hackernews';
 import Configuration from './components/Configuration';
 import update from 'immutability-helper';
 import ProductHunt from './components/ProductHunt';
+import ReutersWire from './components/ReutersWire';
 
 interface props {
 }
@@ -62,6 +63,9 @@ class App extends React.Component<props, state> {
         </div>
         <div className="bl">
           <ProductHunt limit={10} target={this.state.options.target_new_tabs} />
+        </div>
+        <div className="br">
+          <ReutersWire limit={10} target={this.state.options.target_new_tabs} />
         </div>
         <div className="configuration">
           <Configuration target={this.state.options.target_new_tabs} updateTarget={this.setTarget} />
