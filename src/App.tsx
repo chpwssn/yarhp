@@ -63,7 +63,7 @@ class App extends React.Component<props, state> {
           <Configuration target={this.state.options.target_new_tabs} updateTarget={this.setTarget} />
         </div>
         <div className="about">
-          <a href="https://github.com/chpwssn/yarhp">GitHub</a> | No terms of service, no privacy policy, no one should use this app.
+          <a href="https://github.com/chpwssn/yarhp">yarhp on GitHub</a> | No terms of service, no privacy policy, no one should use this app.
         </div>
       </div>
     );
