@@ -6,7 +6,7 @@ interface props {
 }
 
 interface state {
-    
+
 }
 
 class Configuration extends React.Component<props, state> {
@@ -25,7 +25,7 @@ class Configuration extends React.Component<props, state> {
         return (
             <div className="configuration">
                 <label htmlFor="target">Open in new tabs:</label>
-                <input type="checkbox" id="target" defaultChecked={this.props.target} onClick={this.setTarget}></input>
+                <input type="checkbox" id="target" checked={this.props.target} defaultChecked={this.props.target} onClick={this.setTarget}></input>
             </div>
         );
     }

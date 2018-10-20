@@ -3,12 +3,20 @@ import './App.css';
 import HackerNews from './components/HackerNews';
 import { StoryTypes } from './lib/hackernews';
 import Configuration from './components/Configuration';
+import update from 'immutability-helper';
 
 interface props {
 }
 
+interface options {
+  version: number,
+  target_new_tabs: boolean,
+  hacker_news: boolean,
+  github_trending: string,
+}
+
 interface state {
-  target: boolean
+  options: options
 }
 
 class App extends React.Component<props, state> {
@@ -16,24 +24,39 @@ class App extends React.Component<props, state> {
   public constructor(props: props) {
     super(props)
     this.state = {
-      target: true
+      options: {
+        version: 1,
+        target_new_tabs: false,
+        hacker_news: true,
+        github_trending: "week"
+      }
     }
   }
   public componentDidMount = async () => {
+    const lsOptions = localStorage.getItem('allOptions')
+    if (lsOptions !== null) {
+      this.setState({ options: JSON.parse(lsOptions) })
+    }
   }
 
   public setTarget = (target: boolean) => {
-    this.setState({target})
+    this.setState({ options: update(this.state.options, { target_new_tabs: { $set: target } }) }, () => {
+      this.saveOptions()
+    })
+  }
+
+  public saveOptions = () => {
+    localStorage.setItem('allOptions', JSON.stringify(this.state.options))
   }
 
   public render() {
     return (
       <div className="app">
         <div className="tl">
-          <HackerNews type={StoryTypes.Top} limit={10} target={this.state.target} />
+          <HackerNews type={StoryTypes.Top} limit={10} target={this.state.options.target_new_tabs} />
         </div>
         <div className="configuration">
-          <Configuration target={this.state.target} updateTarget={this.setTarget}/>
+          <Configuration target={this.state.options.target_new_tabs} updateTarget={this.setTarget} />
         </div>
         <div className="about">
           <a href="https://github.com/chpwssn/yarhp">GitHub</a> | No terms of service, no privacy policy, no one should use this app.
