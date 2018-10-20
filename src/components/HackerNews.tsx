@@ -4,7 +4,8 @@ import HackerNewsStory from './HackerNewsStory';
 
 interface props {
     type: string,
-    limit: number
+    limit: number,
+    target: boolean
 }
 
 interface state {
@@ -22,9 +23,17 @@ class HackerNews extends React.Component<props, state> {
         }
     }
 
+    public loadData = async () => {
+        return new Promise(async (resolve, reject) => {
+            const stories = await hackernews.getStories(this.props.type)
+            this.setState({ stories }, () => {
+                resolve()
+            })
+        })
+    }
+
     public componentDidMount = async () => {
-        const stories = await hackernews.getStories(this.props.type)
-        this.setState({ stories })
+        await this.loadData()
     }
 
     public next = () => {
@@ -40,11 +49,12 @@ class HackerNews extends React.Component<props, state> {
     public render() {
         return (
             <div className="hn">
+                <div className="refresh" onClick={this.loadData}>r</div>
                 <div className="stories">
                     <a href="https://news.ycombinator.com">Hacker News</a>
                     {
-                        this.state.stories.slice(this.state.head, this.state.head + this.props.limit).map(story => (
-                            <HackerNewsStory id={story} key={story} />
+                        this.state.stories.slice(this.state.head, this.state.head + this.props.limit).map((story, i) => (
+                            <HackerNewsStory id={story} index={this.state.head + i} key={story} target={this.props.target} />
                         ))
                     }
                 </div>
