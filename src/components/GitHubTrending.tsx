@@ -1,32 +1,32 @@
 import * as React from 'react';
-import hackernews from '../lib/hackernews';
-import HackerNewsStory from './HackerNewsStory';
+import githubtrending, { TrendingRepo } from '../lib/githubtrending';
+import GitHubTrendingRepo from './GitHubTrendingRepo';
 
 interface props {
-    type: string,
     limit: number,
+    interval: string,
     target: boolean
 }
 
 interface state {
-    stories: number[],
+    repos: TrendingRepo[],
     head: number,
 }
 
-class HackerNews extends React.Component<props, state> {
+class GitHubTrending extends React.Component<props, state> {
 
     public constructor(props: props) {
         super(props)
         this.state = {
-            stories: [],
+            repos: [],
             head: 0
         }
     }
 
     public loadData = async () => {
         return new Promise(async (resolve, reject) => {
-            const stories = await hackernews.getStories(this.props.type)
-            this.setState({ stories }, () => {
+            const repos = await githubtrending.getTrending(this.props.interval)
+            this.setState({ repos }, () => {
                 resolve()
             })
         })
@@ -48,13 +48,13 @@ class HackerNews extends React.Component<props, state> {
 
     public render() {
         return (
-            <div className="hn site">
+            <div className="githubtrending site">
                 <div className="refresh" onClick={this.loadData}>r</div>
                 <div className="stories">
-                    <a href="https://news.ycombinator.com">Hacker News</a>
+                    <a href="https://github.com/trending">GitHub Trending</a>
                     {
-                        this.state.stories.slice(this.state.head, this.state.head + this.props.limit).map((story, i) => (
-                            <HackerNewsStory id={story} index={this.state.head + i} key={story} target={this.props.target} />
+                        this.state.repos.slice(this.state.head, this.state.head + this.props.limit).map((repo, i) => (
+                            <GitHubTrendingRepo repo={repo} index={this.state.head + i} key={this.state.head + i} target={this.props.target} />
                         ))
                     }
                 </div>
@@ -71,4 +71,4 @@ class HackerNews extends React.Component<props, state> {
     }
 }
 
-export default HackerNews;
+export default GitHubTrending;

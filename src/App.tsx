@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import HackerNews from './components/HackerNews';
+import GitHubTrending from './components/GitHubTrending';
 import { StoryTypes } from './lib/hackernews';
 import Configuration from './components/Configuration';
 import update from 'immutability-helper';
@@ -54,6 +55,9 @@ class App extends React.Component<props, state> {
       <div className="app">
         <div className="tl">
           <HackerNews type={StoryTypes.Top} limit={10} target={this.state.options.target_new_tabs} />
+        </div>
+        <div className="tr">
+          <GitHubTrending limit={10} target={this.state.options.target_new_tabs} interval={this.state.options.github_trending} />
         </div>
         <div className="configuration">
           <Configuration target={this.state.options.target_new_tabs} updateTarget={this.setTarget} />
