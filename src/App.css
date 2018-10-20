@@ -4,7 +4,7 @@
 
 .site {
   max-width: 40rem;
-  border: #EEEEEE solid;
+  border: #cdcdcd solid;
   padding: 0.2rem;
   margin: 0 0.1rem 0 0;
 }
@@ -15,6 +15,11 @@
 
 .site a {
   text-decoration: none;
+  color: #262baf;
+}
+
+.site a:visited {
+  color: #27233a;
 }
 
 .site .details {
@@ -81,4 +86,8 @@
   margin: 0;
   padding: 0 0.2rem;
   cursor: pointer;
+}
+
+body {
+  background-color: #e3e4db;
 }
