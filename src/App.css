@@ -50,9 +50,21 @@
     grid-column: 1;
     grid-row: 2;
   }
-  .configuration { 
+  .bl {
     grid-column: 1;
     grid-row: 3;
+  }
+  .br {
+    grid-column: 1;
+    grid-row: 4;
+  }
+  .configuration { 
+    grid-column: 1;
+    grid-row: 5;
+  }
+  .about {
+    grid-column: 1;
+    grid-row: 6;
   }
 }
 
@@ -65,9 +77,21 @@
     grid-column: 2;
     grid-row: 1;
   }
-  .configuration { 
+  .bl {
     grid-column: 1;
     grid-row: 2;
+  }
+  .br {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .configuration { 
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .about {
+    grid-column: 2;
+    grid-row: 3;
   }
 }
 

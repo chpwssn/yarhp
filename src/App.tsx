@@ -5,6 +5,7 @@ import GitHubTrending from './components/GitHubTrending';
 import { StoryTypes } from './lib/hackernews';
 import Configuration from './components/Configuration';
 import update from 'immutability-helper';
+import ProductHunt from './components/ProductHunt';
 
 interface props {
 }
@@ -58,6 +59,9 @@ class App extends React.Component<props, state> {
         </div>
         <div className="tr">
           <GitHubTrending limit={10} target={this.state.options.target_new_tabs} interval={this.state.options.github_trending} />
+        </div>
+        <div className="bl">
+          <ProductHunt limit={10} target={this.state.options.target_new_tabs} />
         </div>
         <div className="configuration">
           <Configuration target={this.state.options.target_new_tabs} updateTarget={this.setTarget} />
