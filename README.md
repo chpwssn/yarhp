@@ -12,3 +12,11 @@ Future improvements will likely be:
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+
+# Contributing
+
+This app is open for contribution, check out the [Issues Tab](https://github.com/chpwssn/yarhp/issues) and get started!
+
+# License
+
+This codebase is available under the [MIT license](https://choosealicense.com/licenses/mit/) as described in LICENSE.txt.
