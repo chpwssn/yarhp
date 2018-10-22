@@ -35,7 +35,7 @@ class Configuration extends React.Component<props, state> {
         return (
             <div className="configuration">
                 <label htmlFor="target">Open in new tabs:</label>
-                <input type="checkbox" id="target" checked={this.props.options.target_new_tabs} onChange={this.setTarget}></input>
+                <input type="checkbox" id="target" checked={this.props.options.target_new_tabs} onChange={this.setTarget}></input><br/>
                 <label htmlFor="githubinterval">GitHub Trending Interval:</label> 
                 <select id="githubinterval" onChange={this.setGitHubTrendingInterval} value={this.props.options.github_trending}>
                     <option value="daily">today</option>
