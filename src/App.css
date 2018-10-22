@@ -1,5 +1,7 @@
 .site .stories{
   min-height: 22rem;
+  display: grid;
+  grid-gap: 0.1rem;
 }
 
 .site {
