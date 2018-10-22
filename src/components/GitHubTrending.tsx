@@ -1,6 +1,6 @@
 import * as React from 'react';
 import githubtrending, { TrendingRepo } from '../lib/githubtrending';
-// import GitHubTrendingRepo from './GitHubTrendingRepo';
+import GitHubTrendingRepo from './GitHubTrendingRepo';
 
 interface props {
     limit: number,
@@ -53,21 +53,20 @@ class GitHubTrending extends React.Component<props, state> {
                 <div className="refresh" onClick={this.loadData}>r</div>
                 <div className="stories">
                     <a href="https://github.com/trending">GitHub Trending</a>
-                    {/* {
+                    {
                         this.state.repos.slice(this.state.head, this.state.head + this.props.limit).map((repo, i) => (
                             <GitHubTrendingRepo repo={repo} index={this.state.head + i} key={this.state.head + i} target={this.props.target} />
                         ))
-                    } */}
-                    <p>GitHub trending is currently unavailable.</p>
+                    }
                 </div>
-                {/* <div className="controls">
+                <div className="controls">
                     <button className="prev" onClick={this.previous} disabled={this.state.head == 0}>
                         Previous
                     </button>
                     <button className="next" onClick={this.next}>
                         Next
                 </button>
-                </div> */}
+                </div>
             </div>
         );
     }
