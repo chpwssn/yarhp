@@ -40,6 +40,10 @@ class HackerNewsStory extends React.Component<props, state> {
     return this.state.story.url ? this.state.story.url : this.discussLink();
   }
 
+  private userLink = (): string => {
+    return `https://news.ycombinator.com/user?id=${this.state.story.by}`;
+  }
+
   public render() {
     return (
       <div className="hn-story story">
@@ -53,7 +57,7 @@ class HackerNewsStory extends React.Component<props, state> {
               }</a>
             </div>
             <div className="details">
-              {this.state.story.score} by <a href={`https://news.ycombinator.com/user?id=${this.state.story.by}`} target={this.props.target ? "_blank" : ""}>{this.state.story.by}</a> {moment.unix(this.state.story.time).fromNow()} | <a href={this.discussLink()} target="_blank">{this.state.story.descendants} comments</a>
+              {this.state.story.score} by <a href={this.userLink()} target={this.props.target ? "_blank" : ""}>{this.state.story.by}</a> {moment.unix(this.state.story.time).fromNow()} | <a href={this.discussLink()} target="_blank">{this.state.story.descendants} comments</a>
             </div>
           </div>
         ) : "Loading..."}
