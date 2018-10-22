@@ -39,7 +39,7 @@
   font-size: 0.7rem;
 }
 
-.app {
+.app .container{
   margin: 0.5rem;
   display: grid;
   grid-gap: 10px;
@@ -47,9 +47,8 @@
 }
 
 @media only screen and (max-width: 599px) {
-  .app {
+  .app .container {
     grid-template-columns: repeat(1, 1fr);
-
   }
   .tr {
     grid-column: 1;
@@ -74,7 +73,7 @@
 }
 
 @media only screen and (min-width: 900px) {
-  .app {
+  .app .container{
     grid-template-columns: repeat(2, 1fr);
 
   }

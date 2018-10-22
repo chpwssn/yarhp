@@ -24,6 +24,7 @@ class GitHubTrending extends React.Component<props, state> {
     }
 
     public loadData = async () => {
+        console.log(this.props.interval)
         return new Promise(async (resolve, reject) => {
             const repos = await githubtrending.getTrending(this.props.interval)
             this.setState({ repos }, () => {
