@@ -32,16 +32,28 @@ class HackerNewsStory extends React.Component<props, state> {
       return match ? match[1] : null;
   }
 
+  private discussLink = (): string => {
+    return `https://news.ycombinator.com/item?id=${this.state.story.id}`;
+  }
+
+  private storyLink = (): string => {
+    return this.state.story.url ? this.state.story.url : this.discussLink();
+  }
+
   public render() {
     return (
       <div className="hn-story story">
         {this.state ? (
           <div className="link">
             <div className="title">
-              <span className="index">{this.props.index + 1}</span> <a href={this.state.story.url} target={this.props.target ? "_blank" : ""} >{this.state.story.title} <span className="domain">({this.domainFromLink(this.state.story.url)})</span></a>
+              <span className="index">{this.props.index + 1}</span> <a href={this.storyLink()} target={this.props.target ? "_blank" : ""} >{this.state.story.title} {
+                this.state.story.url ? (
+                  <span className="domain">({this.domainFromLink(this.state.story.url)})</span>
+                ) : null
+              }</a>
             </div>
             <div className="details">
-              {this.state.story.score} by <a href={`https://news.ycombinator.com/user?id=${this.state.story.by}`} target={this.props.target ? "_blank" : ""}>{this.state.story.by}</a> {moment.unix(this.state.story.time).fromNow()} | <a href={`https://news.ycombinator.com/item?id=${this.state.story.id}`} target="_blank">{this.state.story.descendants} comments</a>
+              {this.state.story.score} by <a href={`https://news.ycombinator.com/user?id=${this.state.story.by}`} target={this.props.target ? "_blank" : ""}>{this.state.story.by}</a> {moment.unix(this.state.story.time).fromNow()} | <a href={this.discussLink()} target="_blank">{this.state.story.descendants} comments</a>
             </div>
           </div>
         ) : "Loading..."}
