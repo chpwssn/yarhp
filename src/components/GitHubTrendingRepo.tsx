@@ -18,7 +18,7 @@ class GitHubTrendingRepo extends React.Component<props, state> {
 
   public render() {
     return (
-      <div className="githubtrending-repo">
+      <div className="githubtrending-repo story">
         <div className="link">
           <div className="title">
             <span className="index">{this.props.index + 1}</span> <a href={this.props.repo.url} target={this.props.target ? "_blank" : ""} >{this.props.repo.author}/{this.props.repo.name}</a>

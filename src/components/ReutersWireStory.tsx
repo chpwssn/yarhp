@@ -19,7 +19,7 @@ class ReutersWireStory extends React.Component<props, state> {
   public render() {
     const story = this.props.story.templates[0].story;
     return (
-      <div className="reuters-story">
+      <div className="reuters-story story">
         <div className="link">
           <div className="title">
             <span className="index">{this.props.index + 1}</span> <a href={story.url} target={this.props.target ? "_blank" : ""} >{story.hed}</a>
