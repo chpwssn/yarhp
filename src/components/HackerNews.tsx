@@ -1,6 +1,7 @@
 import * as React from 'react';
 import hackernews from '../lib/hackernews';
 import HackerNewsStory from './HackerNewsStory';
+import Loading from 'src/elements/Loading';
 
 interface props {
     type: string,
@@ -11,6 +12,7 @@ interface props {
 interface state {
     stories: number[],
     head: number,
+    firstLoadComplete: boolean
 }
 
 class HackerNews extends React.Component<props, state> {
@@ -19,14 +21,15 @@ class HackerNews extends React.Component<props, state> {
         super(props)
         this.state = {
             stories: [],
-            head: 0
+            head: 0,
+            firstLoadComplete: false
         }
     }
 
     public loadData = async () => {
         return new Promise(async (resolve, reject) => {
             const stories = await hackernews.getStories(this.props.type)
-            this.setState({ stories }, () => {
+            this.setState({ stories, firstLoadComplete: true }, () => {
                 resolve()
             })
         })
@@ -53,9 +56,11 @@ class HackerNews extends React.Component<props, state> {
                 <div className="stories">
                     <a href="https://news.ycombinator.com">Hacker News</a>
                     {
-                        this.state.stories.slice(this.state.head, this.state.head + this.props.limit).map((story, i) => (
-                            <HackerNewsStory id={story} index={this.state.head + i} key={story} target={this.props.target} />
-                        ))
+                        this.state.firstLoadComplete ? (
+                            this.state.stories.slice(this.state.head, this.state.head + this.props.limit).map((story, i) => (
+                                <HackerNewsStory id={story} index={this.state.head + i} key={story} target={this.props.target} />
+                            ))
+                        ) : <Loading />
                     }
                 </div>
                 <div className="controls">

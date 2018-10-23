@@ -1,6 +1,8 @@
 import * as React from 'react';
 import githubtrending, { TrendingRepo } from '../lib/githubtrending';
 import GitHubTrendingRepo from './GitHubTrendingRepo';
+import NotFound from '../elements/NotFound';
+import Loading from 'src/elements/Loading';
 
 interface props {
     limit: number,
@@ -11,6 +13,7 @@ interface props {
 interface state {
     repos: TrendingRepo[],
     head: number,
+    firstLoadComplete: boolean
 }
 
 class GitHubTrending extends React.Component<props, state> {
@@ -19,15 +22,15 @@ class GitHubTrending extends React.Component<props, state> {
         super(props)
         this.state = {
             repos: [],
-            head: 0
+            head: 0,
+            firstLoadComplete: false
         }
     }
 
     public loadData = async () => {
-        console.log(this.props.interval)
         return new Promise(async (resolve, reject) => {
             const repos = await githubtrending.getTrending(this.props.interval)
-            this.setState({ repos }, () => {
+            this.setState({ repos, firstLoadComplete: true }, () => {
                 resolve()
             })
         })
@@ -54,9 +57,13 @@ class GitHubTrending extends React.Component<props, state> {
                 <div className="stories">
                     <a href="https://github.com/trending">GitHub Trending</a>
                     {
-                        this.state.repos.slice(this.state.head, this.state.head + this.props.limit).map((repo, i) => (
-                            <GitHubTrendingRepo repo={repo} index={this.state.head + i} key={this.state.head + i} target={this.props.target} />
-                        ))
+                        this.state.firstLoadComplete ? (
+                            this.state.repos.length ? (
+                                this.state.repos.slice(this.state.head, this.state.head + this.props.limit).map((repo, i) => (
+                                    <GitHubTrendingRepo repo={repo} index={this.state.head + i} key={this.state.head + i} target={this.props.target} />
+                                ))
+                                ) : <NotFound text="No GitHub repos found. Click here to retry or try another interval." refreshEvent={this.loadData}/>
+                        ) : <Loading/>
                     }
                 </div>
                 <div className="controls">

@@ -3,6 +3,7 @@ import reuterswire, { WireItem, WireResponse } from '../lib/reuterswire';
 import Experimental from './Experimental';
 import Unofficial from './Unofficial';
 import ReutersWireStory from './ReutersWireStory';
+import Loading from 'src/elements/Loading';
 
 interface props {
     limit: number,
@@ -12,6 +13,7 @@ interface props {
 interface state {
     posts: WireItem[],
     head: number,
+    firstLoadComplete: boolean
 }
 
 class ReutersWire extends React.Component<props, state> {
@@ -20,7 +22,8 @@ class ReutersWire extends React.Component<props, state> {
         super(props)
         this.state = {
             posts: [],
-            head: 0
+            head: 0,
+            firstLoadComplete: false
         }
     }
 
@@ -33,7 +36,7 @@ class ReutersWire extends React.Component<props, state> {
                     stories.push(item)
                 }
             })
-            this.setState({ posts: stories }, () => {
+            this.setState({ posts: stories, firstLoadComplete: true }, () => {
                 resolve()
             })
         })
@@ -60,9 +63,11 @@ class ReutersWire extends React.Component<props, state> {
                 <div className="stories">
                     <a href="https://www.reuters.com/theWire">Reuters Wire <Experimental /> <Unofficial /></a>
                     {
-                        this.state.posts.slice(this.state.head, this.state.head + this.props.limit).map((post, i) => (
-                            <ReutersWireStory story={post} index={this.state.head + i} key={this.state.head + i} target={this.props.target} />
-                        ))
+                        this.state.firstLoadComplete ? (
+                            this.state.posts.slice(this.state.head, this.state.head + this.props.limit).map((post, i) => (
+                                <ReutersWireStory story={post} index={this.state.head + i} key={this.state.head + i} target={this.props.target} />
+                            ))
+                        ) : <Loading />
                     }
                 </div>
                 <div className="controls">

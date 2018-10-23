@@ -6,7 +6,7 @@
 
 .site {
   max-width: 40rem;
-  border: #cdcdcd solid;
+   border: #cdcdcd solid;
   padding: 0.2rem;
   margin: 0 0.1rem 0 0;
 }
@@ -23,6 +23,15 @@
 .site a:visited {
   color: #27233a;
 }
+
+.about a {
+  color: #262baf;
+}
+
+.about a:visited {
+  color: #27233a;
+}
+
 
 .site .details {
   font-size: 0.75rem;
@@ -42,6 +51,7 @@
   display: grid;
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
+  justify-items: center;
 }
 
 @media only screen and (max-width: 599px) {
@@ -73,7 +83,6 @@
 @media only screen and (min-width: 900px) {
   .app .container{
     grid-template-columns: repeat(2, 1fr);
-
   }
   .tr {
     grid-column: 2;
@@ -95,6 +104,9 @@
     grid-column: 2;
     grid-row: 3;
   }
+  .site {
+    min-width: 30rem;
+  }
 }
 
 .tl {
@@ -112,6 +124,10 @@
   margin: 0;
   padding: 0 0.2rem;
   cursor: pointer;
+}
+
+.container .configuration {
+  justify-self: left;
 }
 
 body {

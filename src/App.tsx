@@ -6,6 +6,7 @@ import { StoryTypes } from './lib/hackernews';
 import Configuration from './components/Configuration';
 import ProductHunt from './components/ProductHunt';
 import ReutersWire from './components/ReutersWire';
+import YarhpNews from './components/YarhpNews';
 
 interface props {
 }
@@ -80,6 +81,7 @@ class App extends React.Component<props, state> {
               <Configuration options={this.state.options} updateOptions={this.updateOptions} />
             </div>
             <div className="about">
+              <YarhpNews/>
               <a href="https://github.com/chpwssn/yarhp">yarhp on GitHub</a> | No terms of service, no privacy policy, no one should use this app.
             </div>
           </div>

@@ -2,6 +2,7 @@ import * as React from 'react';
 import producthunt, { Post, PostsResponse } from '../lib/producthunt';
 import ProductHuntPost from './ProductHuntPost';
 import Experimental from './Experimental';
+import Loading from 'src/elements/Loading';
 
 interface props {
     limit: number,
@@ -11,6 +12,7 @@ interface props {
 interface state {
     posts: Post[],
     head: number,
+    firstLoadComplete: boolean
 }
 
 class ProductHunt extends React.Component<props, state> {
@@ -19,14 +21,15 @@ class ProductHunt extends React.Component<props, state> {
         super(props)
         this.state = {
             posts: [],
-            head: 0
+            head: 0,
+            firstLoadComplete: false
         }
     }
 
     public loadData = async () => {
         return new Promise(async (resolve, reject) => {
             const response: PostsResponse = await producthunt.getPosts()
-            this.setState({ posts: response.posts }, () => {
+            this.setState({ posts: response.posts, firstLoadComplete: true }, () => {
                 resolve()
             })
         })
@@ -53,9 +56,11 @@ class ProductHunt extends React.Component<props, state> {
                 <div className="stories">
                     <a href="https://www.producthunt.com">Product Hunt <Experimental /></a>
                     {
-                        this.state.posts.slice(this.state.head, this.state.head + this.props.limit).map((post, i) => (
-                            <ProductHuntPost post={post} index={this.state.head + i} key={this.state.head + i} target={this.props.target} />
-                        ))
+                        this.state.firstLoadComplete ? (
+                            this.state.posts.slice(this.state.head, this.state.head + this.props.limit).map((post, i) => (
+                                <ProductHuntPost post={post} index={this.state.head + i} key={this.state.head + i} target={this.props.target} />
+                            ))
+                        ) : <Loading />
                     }
                 </div>
                 <div className="controls">
