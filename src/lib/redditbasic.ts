@@ -116,11 +116,22 @@ interface Object {
     data: ObjectData
 }
 
+interface ApiResponse {
+    kind: string,
+    data: {
+        modhash: string,
+        dist: number,
+        children: Object[],
+        after: string,
+        before: string,
+    }
+}
+
 const redditbasic = {
-    getBest: async (): Promise<any> => {
-        return new Promise(async (resolve, reject) => {
+    getBest: async (): Promise<ApiResponse> => {
+        return new Promise<ApiResponse>(async (resolve, reject) => {
             const response = await redditbasic.getV0Api([`best`]);
-            resolve(response);
+            resolve(response as ApiResponse);
         })
     },
 
