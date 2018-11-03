@@ -1,12 +1,5 @@
 import Axios from "axios";
 
-const StoryTypes = {
-    Top: "top",
-    Ask: "ask",
-    Show: "show",
-    Job: "job"
-}
-
 interface Gilding {
     gild_1: number,
     gild_2: number,
@@ -111,7 +104,7 @@ interface ObjectData {
 
 }
 
-interface Object {
+interface RedditObject {
     kind: string,
     data: ObjectData
 }
@@ -121,7 +114,7 @@ interface ApiResponse {
     data: {
         modhash: string,
         dist: number,
-        children: Object[],
+        children: RedditObject[],
         after: string,
         before: string,
     }
@@ -153,6 +146,7 @@ const redditbasic = {
 
 export default redditbasic;
 export {
-    StoryTypes,
-    Story
+    ObjectData,
+    RedditObject,
+    ApiResponse
 }
