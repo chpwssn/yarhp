@@ -128,6 +128,13 @@ const redditbasic = {
         })
     },
 
+    getMulti: async (multis: string) => {
+        return new Promise<ApiResponse>(async (resolve, reject) => {
+            const response = await redditbasic.getV0Api(['r', multis]);
+            resolve(response as ApiResponse);
+        })
+    },
+
     buildApiQuery: (params: any[], args = []) => {
         return `https://api.reddit.com/` + params.join('/');
     },

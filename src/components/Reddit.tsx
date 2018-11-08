@@ -7,7 +7,8 @@ import Loading from 'src/elements/Loading';
 
 interface props {
     limit: number,
-    target: boolean
+    target: boolean,
+    multi: string
 }
 
 interface state {
@@ -29,7 +30,7 @@ class Reddit extends React.Component<props, state> {
 
     public loadData = async () => {
         return new Promise(async (resolve, reject) => {
-            const response: ApiResponse = await redditbasic.getBest()
+            const response: ApiResponse = (this.props.multi === "" ? await redditbasic.getBest() : await redditbasic.getMulti(this.props.multi))
             this.setState({ posts: response.data.children, firstLoadComplete: true }, () => {
                 resolve()
             })
@@ -55,7 +56,7 @@ class Reddit extends React.Component<props, state> {
             <div className="producthunt site">
                 <div className="refresh" onClick={this.loadData}>r</div>
                 <div className="stories">
-                    <a href="https://reddit.com">Reddit best <Experimental /></a>
+                    <a href="https://reddit.com">Reddit <Experimental /></a>
                     {
                         this.state.firstLoadComplete ? (
                             this.state.posts.slice(this.state.head, this.state.head + this.props.limit).map((post, i) => (

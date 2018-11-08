@@ -5,7 +5,6 @@ import GitHubTrending from './components/GitHubTrending';
 import { StoryTypes } from './lib/hackernews';
 import Configuration from './components/Configuration';
 import ProductHunt from './components/ProductHunt';
-import ReutersWire from './components/ReutersWire';
 import YarhpNews from './components/YarhpNews';
 import Reddit from './components/Reddit';
 
@@ -17,6 +16,7 @@ interface options {
   target_new_tabs: boolean,
   hacker_news: boolean,
   github_trending: string,
+  reddit_multi: string,
 }
 
 interface state {
@@ -42,7 +42,8 @@ class App extends React.Component<props, state> {
         version: 1,
         target_new_tabs: false,
         hacker_news: true,
-        github_trending: "weekly"
+        github_trending: "weekly",
+        reddit_multi: ""
       };
       this.setState({ options: defaultOptions })
     }
@@ -76,15 +77,14 @@ class App extends React.Component<props, state> {
               <ProductHunt limit={10} target={this.state.options.target_new_tabs} />
             </div>
             <div className="br">
-              <Reddit limit={10} target={this.state.options.target_new_tabs} />
+              <Reddit limit={10} target={this.state.options.target_new_tabs} multi={this.state.options.reddit_multi} />
             </div>
             <div className="configuration">
               <Configuration options={this.state.options} updateOptions={this.updateOptions} />
-              <YarhpNews />
-              <a href="https://github.com/chpwssn/yarhp">yarhp on GitHub</a> | No terms of service, no privacy policy, no one should use this app.
             </div>
             <div className="about">
-              <ReutersWire limit={10} target={this.state.options.target_new_tabs} />
+              <YarhpNews />
+              <a href="https://github.com/chpwssn/yarhp">yarhp on GitHub</a> | No terms of service, no privacy policy, no one should use this app.
             </div>
           </div>
         ) : null}
