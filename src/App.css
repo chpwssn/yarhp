@@ -1,4 +1,4 @@
-.site .stories{
+.site .stories {
   min-height: 22rem;
   display: grid;
   grid-gap: 0.1rem;
@@ -6,7 +6,7 @@
 
 .site {
   max-width: 40rem;
-   border: #cdcdcd solid;
+  border: #0e1d2a solid;
   padding: 0.2rem;
   margin: 0 0.1rem 0 0;
 }
@@ -15,23 +15,47 @@
   float: right;
 }
 
+.site {
+  color: #c4654f;
+}
+
 .site a {
   text-decoration: none;
-  color: #262baf;
+  color: #79a1d2;
 }
 
 .site a:visited {
-  color: #27233a;
+  color: #3b95b0;
 }
 
 .about a {
-  color: #262baf;
+  color: #79a1d2;
 }
 
 .about a:visited {
-  color: #27233a;
+  color: #3b95b0;
 }
 
+.about {
+  color: #c4654f;
+}
+
+.configuration {
+  color: #c4654f;
+}
+
+select {
+  background-color: #090a1b;
+  border: #0e1d2a solid 2px;
+  color: #c4654f;
+  margin-left: 10px;
+}
+input {
+  background-color: #090a1b;
+  border: #0e1d2a solid 2px;
+  color: #c4654f;
+  margin-left: 10px;
+}
 
 .site .details {
   font-size: 0.75rem;
@@ -39,14 +63,14 @@
 
 .story .title .domain {
   font-size: 0.5rem;
-  color: black;
+  color: #3b95b0;
 }
 
 .site .index {
   font-size: 0.7rem;
 }
 
-.app .container{
+.app .container {
   margin: 0.5rem;
   display: grid;
   grid-gap: 10px;
@@ -70,7 +94,7 @@
     grid-column: 1;
     grid-row: 4;
   }
-  .configuration { 
+  .configuration {
     grid-column: 1;
     grid-row: 5;
   }
@@ -84,7 +108,7 @@
 }
 
 @media only screen and (min-width: 900px) {
-  .app .container{
+  .app .container {
     grid-template-columns: repeat(2, 1fr);
   }
   .tr {
@@ -99,7 +123,7 @@
     grid-column: 2;
     grid-row: 2;
   }
-  .configuration { 
+  .configuration {
     grid-column: 1;
     grid-row: 3;
   }
@@ -117,9 +141,8 @@
   grid-row: 1;
 }
 
-
 .clear {
-  float: clear
+  float: clear;
 }
 
 .site .refresh {
@@ -134,5 +157,17 @@
 }
 
 body {
-  background-color: #e3e4db;
+  background-color: #090a1b;
+}
+
+button {
+  background-color: #0e1d2a;
+  color: #c4654f;
+  border: #79a1d2 solid 2px;
+  border-radius: 2px;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #1b2950;
 }
