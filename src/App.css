@@ -17,6 +17,7 @@
 
 .site {
   color: #c4654f;
+  overflow: hidden;
 }
 
 .site a {
