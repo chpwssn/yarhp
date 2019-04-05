@@ -62,9 +62,13 @@ input {
   font-size: 0.75rem;
 }
 
-.story .title .domain {
+.story .title .domain .mute {
   font-size: 0.5rem;
   color: #3b95b0;
+}
+
+.mute {
+  cursor: pointer;
 }
 
 .site .index {
