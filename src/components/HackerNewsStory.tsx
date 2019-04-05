@@ -46,6 +46,24 @@ class HackerNewsStory extends React.Component<props, state> {
     this.setState({ muted: true });
   };
 
+  public unmuteStory = () => {
+    const mutedStories = localStorage.getItem("hn_muted");
+    const muted =
+      mutedStories && mutedStories != ""
+        ? (JSON.parse(mutedStories) as number[])
+        : [];
+    muted.push(this.props.id);
+    localStorage.setItem(
+      "hn_muted",
+      JSON.stringify(
+        muted.filter((story: number) => {
+          return story != this.props.id;
+        })
+      )
+    );
+    this.setState({ muted: false });
+  };
+
   private domainFromLink = (link: string): string | null => {
     let match = this.domainRegExp.exec(link);
     return match ? match[match.length - 1] : null;
@@ -68,7 +86,9 @@ class HackerNewsStory extends React.Component<props, state> {
       <div className="hn-story story">
         {this.state ? (
           this.state.muted ? (
-            <div>muted</div>
+            <div className="mute" onClick={this.unmuteStory}>
+              muted. click to unmute.
+            </div>
           ) : (
             <div className="link">
               <div className="title">
