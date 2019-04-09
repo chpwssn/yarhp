@@ -62,7 +62,7 @@ input {
   font-size: 0.75rem;
 }
 
-.story .title .domain .mute {
+.story .title .domain {
   font-size: 0.5rem;
   color: #3b95b0;
 }
