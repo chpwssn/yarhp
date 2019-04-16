@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./App.css";
+import "./App.scss";
 import HackerNews from "./components/HackerNews";
 import GitHubTrending from "./components/GitHubTrending";
 import { StoryTypes } from "./lib/hackernews";
@@ -10,7 +10,7 @@ import Reddit from "./components/Reddit";
 
 interface props {}
 
-interface options {
+export interface options {
   version: number;
   target_new_tabs: boolean;
   hacker_news: boolean;
@@ -43,9 +43,12 @@ class App extends React.Component<props, state> {
         github_trending: "weekly",
         reddit_multi: ""
       };
-      const lsSaved = localStorage.getItem("saved");
-      if (lsSaved === null) {
-      }
+      // let lsSaved = localStorage.getItem("saved");
+      // if (lsSaved === null) {
+      //   lsSaved = {
+      //     hn: []
+      //   };
+      // }
       this.setState({ options: defaultOptions });
     }
   };
@@ -115,5 +118,3 @@ class App extends React.Component<props, state> {
 }
 
 export default App;
-
-export { options };

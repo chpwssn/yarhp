@@ -1,3 +1,5 @@
+@import "node_modules/nord/src/sass/nord.scss";
+
 .site .stories {
   min-height: 22rem;
   display: grid;
@@ -6,7 +8,7 @@
 
 .site {
   max-width: 40rem;
-  border: #0e1d2a solid;
+  border: $nord1 solid;
   padding: 0.2rem;
   margin: 0 0.1rem 0 0;
 }
@@ -16,45 +18,45 @@
 }
 
 .site {
-  color: #c4654f;
+  color: $nord7;
   overflow: hidden;
 }
 
 .site a {
   text-decoration: none;
-  color: #79a1d2;
+  color: $nord6;
 }
 
 .site a:visited {
-  color: #3b95b0;
+  color: $nord13;
 }
 
 .about a {
-  color: #79a1d2;
+  color: $nord7;
 }
 
 .about a:visited {
-  color: #3b95b0;
+  color: $nord15;
 }
 
 .about {
-  color: #c4654f;
+  color: $nord4;
 }
 
 .configuration {
-  color: #c4654f;
+  color: $nord4;
 }
 
 select {
   background-color: #090a1b;
-  border: #0e1d2a solid 2px;
-  color: #c4654f;
+  border: $nord3 solid 2px;
+  color: $nord4;
   margin-left: 10px;
 }
 input {
   background-color: #090a1b;
-  border: #0e1d2a solid 2px;
-  color: #c4654f;
+  border: $nord3 solid 2px;
+  color: $nord4;
   margin-left: 10px;
 }
 
@@ -64,10 +66,11 @@ input {
 
 .story .title .domain {
   font-size: 0.5rem;
-  color: #3b95b0;
+  color: $nord9;
 }
 
 .mute {
+  color: $nord12;
   cursor: pointer;
 }
 
@@ -161,18 +164,18 @@ input {
   justify-self: left;
 }
 
-body {
-  background-color: #090a1b;
-}
-
 button {
   background-color: #0e1d2a;
-  color: #c4654f;
-  border: #79a1d2 solid 2px;
+  color: $nord4;
+  border: $nord3 solid 2px;
   border-radius: 2px;
   margin: 5px;
 }
 
 button:hover {
   background-color: #1b2950;
+}
+
+body {
+  background-color: $nord0;
 }
