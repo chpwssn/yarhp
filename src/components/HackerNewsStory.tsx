@@ -1,6 +1,6 @@
 import * as React from "react";
 import hackernews, { Story } from "../lib/hackernews";
-import * as moment from "moment";
+import moment from "moment";
 
 interface props {
   id: number;
@@ -98,10 +98,10 @@ class HackerNewsStory extends React.Component<props, state> {
                   target={this.props.target ? "_blank" : ""}
                 >
                   {this.state.story.title}{" "}
-                  {this.state.domain ? (
-                    <span className="domain">({this.state.domain})</span>
-                  ) : null}
                 </a>
+                {this.state.domain ? (
+                  <span className="domain">({this.state.domain})</span>
+                ) : null}
               </div>
               <div className="details">
                 {this.state.story.score} by{" "}

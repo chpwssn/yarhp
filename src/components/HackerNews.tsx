@@ -1,7 +1,7 @@
 import * as React from "react";
 import hackernews from "../lib/hackernews";
 import HackerNewsStory from "./HackerNewsStory";
-import Loading from "src/elements/Loading";
+import Loading from "../elements/Loading";
 
 interface props {
   type: string;
