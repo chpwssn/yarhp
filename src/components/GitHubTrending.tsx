@@ -2,7 +2,7 @@ import * as React from "react";
 import githubtrending, { TrendingRepo } from "../lib/githubtrending";
 import GitHubTrendingRepo from "./GitHubTrendingRepo";
 import NotFound from "../elements/NotFound";
-import Loading from "../elements/Loading";
+import ClickToLoad from "../elements/ClickToLoad";
 
 interface props {
   limit: number;
@@ -35,9 +35,7 @@ class GitHubTrending extends React.Component<props, state> {
     });
   };
 
-  public componentDidMount = async () => {
-    await this.loadData();
-  };
+  public componentDidMount = async () => {};
 
   public next = () => {
     this.setState({ head: this.state.head + this.props.limit });
@@ -76,7 +74,7 @@ class GitHubTrending extends React.Component<props, state> {
               />
             )
           ) : (
-            <Loading />
+            <ClickToLoad onClick={this.loadData} />
           )}
         </div>
         <div className="controls">
