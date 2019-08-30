@@ -2,7 +2,7 @@ import * as React from "react";
 import redditbasic, { RedditObject, ApiResponse } from "../lib/redditbasic";
 import Experimental from "./Experimental";
 import RedditPost from "./RedditPost";
-import Loading from "../elements/Loading";
+import ClickToLoad from "../elements/ClickToLoad";
 
 interface props {
   limit: number;
@@ -41,9 +41,7 @@ class Reddit extends React.Component<props, state> {
     });
   };
 
-  public componentDidMount = async () => {
-    await this.loadData();
-  };
+  public componentDidMount = async () => {};
 
   public next = () => {
     this.setState({ head: this.state.head + this.props.limit });
@@ -77,7 +75,7 @@ class Reddit extends React.Component<props, state> {
                 />
               ))
           ) : (
-            <Loading />
+            <ClickToLoad onClick={this.loadData} />
           )}
         </div>
         <div className="controls">

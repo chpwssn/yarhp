@@ -164,6 +164,24 @@ input {
   justify-self: left;
 }
 
+.timerCollection {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.timer {
+  display: grid;
+  grid-template-columns: 1fr;
+  color: $nord5;
+  font-size: 1em;
+  align-self: center;
+  align-content: center;
+
+  .type {
+    font-size: 0.75em;
+  }
+}
+
 button {
   background-color: #0e1d2a;
   color: $nord4;

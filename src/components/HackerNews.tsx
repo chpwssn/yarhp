@@ -1,7 +1,7 @@
 import * as React from "react";
 import hackernews from "../lib/hackernews";
 import HackerNewsStory from "./HackerNewsStory";
-import Loading from "../elements/Loading";
+import ClickToLoad from "../elements/ClickToLoad";
 
 interface props {
   type: string;
@@ -55,7 +55,6 @@ class HackerNews extends React.Component<props, state> {
 
   public componentDidMount = async () => {
     await this.loadMuted();
-    await this.loadData();
   };
 
   public next = () => {
@@ -88,7 +87,7 @@ class HackerNews extends React.Component<props, state> {
                 />
               ))
           ) : (
-            <Loading />
+            <ClickToLoad onClick={this.loadData} />
           )}
         </div>
         <div className="controls">

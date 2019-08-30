@@ -69,6 +69,11 @@ class App extends React.Component<props, state> {
   public render() {
     return (
       <div className="app">
+        {/* <div className="timerCollection">
+          <Timer type="Day" />
+          <Timer type="Month" />
+          <Timer type="Year" />
+        </div> */}
         {this.state.options ? (
           <div className="container">
             <div className="tl">
