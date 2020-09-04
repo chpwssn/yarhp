@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "immutability-helper": "^2.8.1",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "nord": "^0.2.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
