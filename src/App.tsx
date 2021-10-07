@@ -76,32 +76,8 @@ class App extends React.Component<props, state> {
         </div> */}
         {this.state.options ? (
           <div className="container">
-            <div className="tl">
-              <HackerNews
-                type={StoryTypes.Top}
-                limit={10}
-                target={this.state.options.target_new_tabs}
-              />
-            </div>
-            <div className="tr">
-              <GitHubTrending
-                limit={10}
-                target={this.state.options.target_new_tabs}
-                interval={this.state.options.github_trending}
-              />
-            </div>
-            <div className="bl">
-              <ProductHunt
-                limit={10}
-                target={this.state.options.target_new_tabs}
-              />
-            </div>
-            <div className="br">
-              <Reddit
-                limit={10}
-                target={this.state.options.target_new_tabs}
-                multi={this.state.options.reddit_multi}
-              />
+            <div>
+		<a href="https://media.chip.bz/calibreweb/read/3/epub">read instead</a>
             </div>
             <div className="configuration">
               <Configuration
