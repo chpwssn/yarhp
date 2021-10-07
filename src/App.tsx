@@ -1,12 +1,7 @@
 import * as React from "react";
 import "./App.scss";
-import HackerNews from "./components/HackerNews";
-import GitHubTrending from "./components/GitHubTrending";
-import { StoryTypes } from "./lib/hackernews";
 import Configuration from "./components/Configuration";
-import ProductHunt from "./components/ProductHunt";
 import YarhpNews from "./components/YarhpNews";
-import Reddit from "./components/Reddit";
 
 interface props {}
 
